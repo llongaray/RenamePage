@@ -21,7 +21,7 @@ Este projeto Python oferece uma solução simples para renomear e converter imag
 
 Clique no botão abaixo para baixar diretamente o instalador do Image Renamer:
 
-[![Baixar Instalador](https://img.shields.io/badge/Baixar%20Instalador-blue.svg)](https://mega.nz/file/Qu90kKBC#l9aAESTabJZtCWWdr6x3XgaW8OjKPNcVsrSXXsZSCaw)
+[![Baixar Instalador](https://img.shields.io/badge/Baixar%20Instalador-blue.svg)](https://mega.nz/file/8nNmxCrS#U6mC-mrz_PV212dVSf5pdzIHbAy1MwSK13q5VMO0d4U)
 
 
 # Créditos
