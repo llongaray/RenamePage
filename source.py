@@ -60,9 +60,9 @@ class ImageRenamerApp:
 
         try:
             self.process_subdirectories(root_folder)
-            self.status_label.config(text="Renomeação concluída!")
+            self.status_label.config(text="Arquivos renomeados e convertidos!")
         except Exception as e:
-            self.status_label.config(text=f"Erro ao renomear: {e}")
+            self.status_label.config(text=f"Erro: {e}")
 
     def process_subdirectories(self, root_folder):
         for subdir in os.listdir(root_folder):
@@ -79,14 +79,26 @@ class ImageRenamerApp:
             for file in files:
                 if not file.lower().endswith(selected_format):
                     image_path = os.path.join(subdir, file)
-                    output_path = os.path.join(subdir, f"{os.path.splitext(file)[0]}{selected_format}")
+                    base_name, ext = os.path.splitext(file)
+
+                    # Obtém o número do arquivo, se existir
+                    try:
+                        num = int(base_name)
+                    except ValueError:
+                        num = 0
+
+                    # Renomeia para três dígitos
+                    new_filename = f"{num:03}{selected_format}"
+                    output_path = os.path.join(subdir, new_filename)
 
                     try:
                         img = Image.open(image_path)
                         img.convert("RGB").save(output_path, "JPEG")
                         os.remove(image_path)
                     except Exception as e:
-                        print(f"Erro ao converter {image_path} para {selected_format}: {e}")
+                        self.status_label.config(text=f"Erro ao converter {image_path} para {selected_format}: {e}")
+                        raise  # Propaga a exceção para interromper o processo em caso de erro na conversão
+
 
 if __name__ == "__main__":
     # Oculta a janela de terminal quando executado como um arquivo executável
